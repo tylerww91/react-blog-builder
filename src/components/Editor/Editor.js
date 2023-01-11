@@ -2,20 +2,38 @@ import React from 'react';
 
 import './Editor.css';
 
-export default function Editor({ title, setTitle }) {
+export default function Editor({ title, subtitle, setTitle, setSubtitle }) {
   const handleChange = (event) => {
     console.log('event.target.value', event.target.value);
-    setTitle(event.target.value);
+    event.target.name === 'title' && setTitle(event.target.value);
+    event.target.name === 'subtitle' && setSubtitle(event.target.value);
   };
+
+  // const handleSubChange = (event) => {
+  //   console.log('subevent.target.value', event.target.value);
+  //   setSubtitle(event.target.value);
+  // };
 
   return (
     <div className="editor">
       <div className="form-control">
-        <input name="title" type="text" value={title} onChange={handleChange} />
+        <input
+          name="title"
+          type="text"
+          placeholder="<insert text here>"
+          value={title}
+          onChange={handleChange}
+        />
         <label htmlFor="title">Title</label>
       </div>
       <div className="form-control">
-        <input type="text" />
+        <input
+          name="subtitle"
+          type="text"
+          placeholder="<insert text here>"
+          value={subtitle}
+          onChange={handleChange}
+        />
         <label>Subtitle</label>
       </div>
       <div className="form-control">

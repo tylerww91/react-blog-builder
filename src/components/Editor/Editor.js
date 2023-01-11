@@ -7,17 +7,20 @@ export default function Editor({
   subtitle,
   font,
   align,
+  text,
   setTitle,
   setSubtitle,
   setFont,
   setAlign,
+  setText,
 }) {
   const handleChange = (event) => {
-    console.log('event.target.value', event.target.value);
+    // console.log('event.target.value', event.target.value);
     event.target.name === 'title' && setTitle(event.target.value);
     event.target.name === 'subtitle' && setSubtitle(event.target.value);
     event.target.name === 'font' && setFont(event.target.value);
     event.target.name === 'align' && setAlign(event.target.value);
+    event.target.name === 'text' && setText(event.target.value);
   };
 
   // const handleSubChange = (event) => {
@@ -78,7 +81,7 @@ export default function Editor({
         </div>
       </div>
       <div className="form-control">
-        <textarea style={{ height: '250px' }} />
+        <textarea name="text" value={text} style={{ height: '250px' }} onChange={handleChange} />
         <label>Text</label>
       </div>
     </div>
